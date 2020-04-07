@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/buttons/buttonloader.buttons.dart';
+import 'package:foody/components/header/design3.header.dart';
 import 'package:foody/components/textfields/predesign.textfields.dart';
 
 
@@ -30,6 +31,7 @@ class _EditProductPageState extends State<EditProductPage> {
     return SafeArea(
         child: Container(
                         child: Scaffold(
+                        appBar:PreferredSize(preferredSize: Size.fromHeight(100), child: Design3Header(widget.vm.header, (){})),
                         backgroundColor: Colors.transparent,
                         body:
                           SingleChildScrollView(child:Column(
@@ -53,6 +55,7 @@ class _EditProductPageState extends State<EditProductPage> {
 }
 
 class EditProductPageVM{
+  Design3HeaderVM header;
   TextEditingController titleC=TextEditingController();
   TextEditingController descC=TextEditingController();
   TextEditingController priceC=TextEditingController();
@@ -64,6 +67,7 @@ class EditProductPageVM{
   int buttonState=0;
 
   EditProductPageVM(){
+    this.header=Design3HeaderVM();
     this.titleVM=PreDesignTextFieldsVM.grey("Title", this.titleC, 100, false, TextInputType.text);
     this.descVM=PreDesignTextFieldsVM.grey("Description", this.descC, 500, false, TextInputType.text);
     this.priceVM=PreDesignTextFieldsVM.grey("Price", this.descC, 10, false, TextInputType.number);
