@@ -1,5 +1,9 @@
+import 'package:foody/services/facebook.service.dart';
+
 class Constants{
   static Constants instance=Constants();
+
+  FacebookUserInfo fbLoginInfo;
   String currency="";
   int currencyCode=0;
   ProductsListVM products=ProductsListVM();

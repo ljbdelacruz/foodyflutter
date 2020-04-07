@@ -74,5 +74,4 @@ class EditProductPageVM{
     this.nextBtn=ButtonLoaderVM.preDefault("Next", 12, this.buttonState);
   }
   
-
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/buttons/buttonloader.buttons.dart';
 import 'package:foody/components/subui/loginfields/userlogin.subui.dart';
+import 'package:foody/config/Constants.config.dart';
 import 'package:foody/methodinterface/widget.interface.dart';
 import 'package:foody/services/facebook.service.dart';
+import 'package:foody/services/navigator.service.dart';
 
 class UserLoginPage extends StatefulWidget{
   final UserLoginPageVM  vm=UserLoginPageVM();
@@ -45,6 +47,7 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                   this.startLoader();
                                   widget.vm.loginUsingFB((){
                                     this.finishLoader();
+                                    NavigatorService.instance.toDashboard(context);
                                   }, (msg){
                                     //show error message
                                   });
@@ -82,6 +85,9 @@ class UserLoginPageVM{
       //success process
       print(data.firstName);
       print(data.email);
+      Constants.instance.fbLoginInfo=data;
+      //navigate to dashboards
+      scall();
     });
   }
 

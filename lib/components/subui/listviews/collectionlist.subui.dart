@@ -14,7 +14,7 @@ class CollectionListSubUI extends StatelessWidget {
       itemCount: vm.items.length,      
       itemBuilder: (ctx, i) => getCellsOption(i, ctx),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: vm.crossAxisCount,
         childAspectRatio: vm.widthAspect / vm.heightAspect,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
@@ -32,10 +32,13 @@ class CollectionListSubUI extends StatelessWidget {
 
 class CollectionListSubUIVM{
   CollectionListCellType cellType=CollectionListCellType.menu;
+  int crossAxisCount=3;
   double widthAspect=3;
   double heightAspect=3;
   List<CategoryCellsVM> items=[];
   CollectionListSubUIVM(this.widthAspect, this.heightAspect);
+  CollectionListSubUIVM.footer(this.widthAspect, this.heightAspect, this.crossAxisCount);  
+
   appendItems(int index, String title, String image){
     items.add(CategoryCellsVM(index, title, image));
   }
