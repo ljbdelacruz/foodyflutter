@@ -13,6 +13,11 @@ class _DashboardPageState extends State<DashboardPage> {
   void dispose() {
     super.dispose();
   }
+
+  viewProductInfoPage(){
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
@@ -22,8 +27,6 @@ class _DashboardPageState extends State<DashboardPage> {
       body: 
         SingleChildScrollView(child:Column(
             children: [
-              
-
               Container(height: 300, 
                 child:CollectionListSubUI(widget.vm.category, (index){
                   //index here of item selected
