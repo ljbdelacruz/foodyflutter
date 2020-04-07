@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/buttons/buttonloader.buttons.dart';
 import 'package:foody/components/subui/loginfields/userlogin.subui.dart';
+import 'package:foody/methodinterface/widget.interface.dart';
+import 'package:foody/services/facebook.service.dart';
 
 class UserLoginPage extends StatefulWidget{
   final UserLoginPageVM  vm=UserLoginPageVM();
@@ -37,10 +39,21 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                   this.startLoader();
                                 }, (){
                                   //finished loader
+                                }),
+                                ButtonLoader(widget.vm.fbLoginVM, (){
+                                  //clicked
+                                  this.startLoader();
+                                  widget.vm.loginUsingFB((){
+                                    this.finishLoader();
+                                  }, (msg){
+                                    //show error message
+                                  });
+                                }, (){
+                                  //finished loader
                                 })
                               ],),
                           )
-                              
+                          
                         ,),
                         )
       );
@@ -53,9 +66,23 @@ class UserLoginPageVM{
   TextEditingController passC=TextEditingController();
   ButtonLoaderVM buttonVM;
   int buttonState=0;
+  ButtonLoaderVM fbLoginVM;
 
   UserLoginPageVM(){
     this.userLoginForm=UserLoginSubUIVM.userLogin(this.emailC, this.passC);
     this.buttonVM=ButtonLoaderVM.preDefault("Login", 12, this.buttonState);
+    this.fbLoginVM=ButtonLoaderVM.preDefault("Facebook Login", 12, this.buttonState);
   }
+  loginUsingFB(NormalCallback scall, GetStringData fcall){
+    FacebookService.instance.fbLoginInit((){
+      //cancel
+    }, (msg){
+      //error message
+    }, (data){
+      //success process
+      print(data.firstName);
+      print(data.email);
+    });
+  }
+
 }
