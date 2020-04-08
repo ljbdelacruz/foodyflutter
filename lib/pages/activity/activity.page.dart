@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/header/design2.header.dart';
 import 'package:foody/config/Constants.config.dart';
+import 'package:foody/pages/activity/subpage/activity.subpage.dart';
+import 'package:foody/pages/activity/subpage/delivery.subpage.dart';
 import 'package:foody/services/Color.service.dart';
 
 
@@ -31,8 +33,8 @@ class ActivityPageState extends State<ActivityPage> {
           ),
           body: TabBarView(
             children: [
-              Center( child: Text("Activity Page")),
-              Center( child: Text("Delivery Page")),
+              ActivitySubPage(widget.vm.activitySubPageVM),
+              DeliverySubPage(widget.vm.deliverySubPageVM),
             ],
           ),
         ),
@@ -42,8 +44,12 @@ class ActivityPageState extends State<ActivityPage> {
 
 class ActivityPageVM{
   Design2HeaderVM header;
+  DeliverySubPageVM deliverySubPageVM;
+  ActivitySubPageVM activitySubPageVM;
   ActivityPageVM(){
     this.header=Design2HeaderVM();
+    this.deliverySubPageVM=DeliverySubPageVM();
+    this.activitySubPageVM=ActivitySubPageVM();
   }
 
 }
