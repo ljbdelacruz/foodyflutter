@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/buttons/image2.button.dart';
+import 'package:foody/services/Color.service.dart';
 
 
 class Design1Header extends StatelessWidget {
@@ -8,7 +9,8 @@ class Design1Header extends StatelessWidget {
   Design1Header(this.vm, this.callback);
     @override
     Widget build(BuildContext context) {
-      return PreferredSize(preferredSize: Size.fromHeight(100), child:Container(
+      return  Container(
+              color:ColorsService.instance.primaryColor(),
               child: Column(children: [
                 Row(children: [
                     Flexible(child: Container(), fit: FlexFit.tight, flex: 2),
@@ -17,9 +19,8 @@ class Design1Header extends StatelessWidget {
                     })),
                 ],),
               ]
-            ,),), 
-            // automaticallyImplyLeading: false,
-          );
+            ,),
+      );
     }
 }
 

@@ -38,10 +38,10 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Container(
-      color: Colors.pink,
+      color: Constants.instance.themeColor,
       child: Scaffold(
       key: _drawerKey,        
-      appBar:PreferredSize(preferredSize: Size.fromHeight(100), child: Design1Header(widget.vm.header, (index){
+      appBar:PreferredSize(preferredSize: Size.fromHeight(90), child: Design1Header(widget.vm.header, (index){
         //selected menu
         if(index != 0){
           _drawerKey.currentState.openEndDrawer();
@@ -75,9 +75,12 @@ class _DashboardPageState extends State<DashboardPage> {
             case 3:
               //notification page
               break;
+            case 4:
+              //activity page
+              NavigatorService.instance.toActivity(context);
+              break;
           }
         })
-            
       ),
       ),
     );

@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:foody/services/facebook.service.dart';
 
 class Constants{
   static Constants instance=Constants();
-
+  Color themeColor=Colors.white;
   FacebookUserInfo fbLoginInfo;
   String currency="";
   int currencyCode=0;

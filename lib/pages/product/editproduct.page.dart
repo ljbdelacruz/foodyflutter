@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foody/components/buttons/buttonloader.buttons.dart';
 import 'package:foody/components/header/design3.header.dart';
 import 'package:foody/components/textfields/predesign.textfields.dart';
+import 'package:foody/config/Constants.config.dart';
 
 
 class EditProductPage extends StatefulWidget{
@@ -30,6 +31,7 @@ class _EditProductPageState extends State<EditProductPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
+                        color:Constants.instance.themeColor,
                         child: Scaffold(
                         appBar:PreferredSize(preferredSize: Size.fromHeight(100), child: Design3Header(widget.vm.header, (){})),
                         backgroundColor: Colors.transparent,
@@ -73,5 +75,5 @@ class EditProductPageVM{
     this.priceVM=PreDesignTextFieldsVM.grey("Price", this.descC, 10, false, TextInputType.number);
     this.nextBtn=ButtonLoaderVM.preDefault("Next", 12, this.buttonState);
   }
-  
+
 }

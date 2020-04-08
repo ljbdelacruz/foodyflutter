@@ -22,7 +22,7 @@ class MenuItemCells extends StatelessWidget {
           },
           child: Column(children: [
             Expanded(flex: 1, child: Image.asset(this.vm.imageUrl),),
-            Expanded(flex: 1, child: Text(vm.title),)
+            Expanded(flex: 1, child: Text(vm.title, style:TextStyle(fontSize:vm.titleFz)),)
           ],)
         ),
       ),

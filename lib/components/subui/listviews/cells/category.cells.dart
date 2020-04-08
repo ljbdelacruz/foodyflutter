@@ -26,6 +26,7 @@ class CategoryCells extends StatelessWidget {
           title: Text(
             vm.title,
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize:vm.titleFz)
           ),
         ),
       ),
@@ -36,6 +37,8 @@ class CategoryCellsVM{
   int index;
   String title;
   String imageUrl;
-  CategoryCellsVM(this.index, this.title, this.imageUrl);
+  double titleFz = 10;
+  CategoryCellsVM(this.index, this.title, this.imageUrl, this.titleFz);
+
 }
 

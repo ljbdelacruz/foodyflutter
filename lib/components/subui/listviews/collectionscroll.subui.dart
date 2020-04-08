@@ -20,9 +20,9 @@ class CollectionScrollSubUI extends StatelessWidget {
   }
   Widget getCellsOption(int index, ctx){
     if(vm.cellType == CollectionListCellType.menu){
-      return MenuItemCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl), getIndex);      
+      return MenuItemCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl, vm.items[index].titleFz), getIndex);      
     }else{
-      return CategoryCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl), getIndex);
+      return CategoryCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl, vm.items[index].titleFz), getIndex);
     }
   }
 }
@@ -31,10 +31,11 @@ class CollectionScrollSubUIVM{
   CollectionListCellType cellType=CollectionListCellType.menu;
   double width=3;
   double height=3;
+  double fontSize=15;
   List<CategoryCellsVM> items=[];
-  CollectionScrollSubUIVM(this.width, this.height);
+  CollectionScrollSubUIVM(this.width, this.height, this.fontSize);
   appendItems(int index, String title, String image){
-    items.add(CategoryCellsVM(index, title, image));
+    items.add(CategoryCellsVM(index, title, image, this.fontSize));
   }
 }
 

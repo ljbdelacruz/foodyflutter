@@ -3,6 +3,7 @@ import 'package:foody/components/buttons/buttonloader.buttons.dart';
 import 'package:foody/components/subui/loginfields/userlogin.subui.dart';
 import 'package:foody/config/Constants.config.dart';
 import 'package:foody/methodinterface/widget.interface.dart';
+import 'package:foody/services/device.service.dart';
 import 'package:foody/services/facebook.service.dart';
 import 'package:foody/services/navigator.service.dart';
 
@@ -13,6 +14,17 @@ class UserLoginPage extends StatefulWidget{
   _UserLoginPageState createState() => _UserLoginPageState();
 }
 class _UserLoginPageState extends State<UserLoginPage> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    DeviceService.instance.deviceinfo.getLocation((msg){}, (ldata){
+      print("Location Getter");
+      print(ldata.longitude);
+      print(ldata.latitude);      
+    });
+  }
   @override
   void dispose() {
     super.dispose();

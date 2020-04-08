@@ -16,16 +16,16 @@ class CollectionListSubUI extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: vm.crossAxisCount,
         childAspectRatio: vm.widthAspect / vm.heightAspect,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisSpacing: vm.crossAxisSpacing,
+        mainAxisSpacing: vm.mainAxisSpacing,
       ),
     );
   }
   Widget getCellsOption(int index, ctx){
     if(vm.cellType == CollectionListCellType.menu){
-      return MenuItemCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl), getIndex);      
+      return MenuItemCells(CategoryCellsVM(vm.items[index].index, vm.items[index].title, vm.items[index].imageUrl, vm.items[index].titleFz), getIndex,);      
     }else{
-      return CategoryCells(CategoryCellsVM(index, vm.items[index].title, vm.items[index].imageUrl), getIndex);
+      return CategoryCells(CategoryCellsVM(vm.items[index].index, vm.items[index].title, vm.items[index].imageUrl, vm.items[index].titleFz), getIndex);
     }
   }
 }
@@ -33,14 +33,23 @@ class CollectionListSubUI extends StatelessWidget {
 class CollectionListSubUIVM{
   CollectionListCellType cellType=CollectionListCellType.menu;
   int crossAxisCount=3;
+  double crossAxisSpacing = 10;
+  double mainAxisSpacing = 10;
   double widthAspect=3;
   double heightAspect=3;
+  double fontSize=10;
+  
   List<CategoryCellsVM> items=[];
-  CollectionListSubUIVM(this.widthAspect, this.heightAspect);
-  CollectionListSubUIVM.footer(this.widthAspect, this.heightAspect, this.crossAxisCount);  
-
+  CollectionListSubUIVM(this.widthAspect, this.heightAspect){
+    this.fontSize=15;
+  }
+  CollectionListSubUIVM.footer(this.widthAspect, this.heightAspect, this.crossAxisCount){
+    this.crossAxisSpacing=0;
+    mainAxisSpacing=0;
+  }
+  CollectionListSubUIVM.product(this.widthAspect, this.heightAspect, this.crossAxisCount, this.crossAxisSpacing, this.mainAxisSpacing);
   appendItems(int index, String title, String image){
-    items.add(CategoryCellsVM(index, title, image));
+    items.add(CategoryCellsVM(index, title, image, this.fontSize));
   }
 }
 
