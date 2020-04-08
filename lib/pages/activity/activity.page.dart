@@ -33,7 +33,11 @@ class ActivityPageState extends State<ActivityPage> {
           ),
           body: TabBarView(
             children: [
-              ActivitySubPage(widget.vm.activitySubPageVM),
+              ActivitySubPage(widget.vm.activitySubPageVM, (index){
+                //selected item
+                print("Selected Index");
+                print(index);
+              }),
               DeliverySubPage(widget.vm.deliverySubPageVM),
             ],
           ),

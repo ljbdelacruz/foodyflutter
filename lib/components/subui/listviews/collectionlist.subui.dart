@@ -13,7 +13,7 @@ class CollectionListSubUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
-      itemCount: vm.items.length,
+      itemCount: vm.cellType == CollectionListCellType.activity ? vm.activityCells.length : vm.items.length,
       itemBuilder: (ctx, i) => getCellsOption(i, ctx),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: vm.crossAxisCount,
@@ -34,11 +34,6 @@ class CollectionListSubUI extends StatelessWidget {
       case CollectionListCellType.activity:
         return ActivityCells(vm.activityCells[index], getIndex);
         break;
-    }
-    if(vm.cellType == CollectionListCellType.menu){
-      return MenuItemCells(CategoryCellsVM(vm.items[index].index, vm.items[index].title, vm.items[index].imageUrl, vm.items[index].titleFz), getIndex,);      
-    }else{
-      return ActivityCells(vm.activityCells[index], getIndex);
     }
   }
 }
@@ -65,6 +60,12 @@ class CollectionListSubUIVM{
     items.add(CategoryCellsVM(index, title, image, this.fontSize));
   }
   appendActivityCells(int index, String title, String desc, String status, String image){
+    this.cellType = CollectionListCellType.activity;
+    this.widthAspect=1;
+    this.heightAspect=1;
+    this.crossAxisCount=1;
+    this.crossAxisSpacing=0;
+    this.mainAxisSpacing=0;
     activityCells.add(ActivityCellsVM.item(title, desc, status, image, index));
   }
 }
