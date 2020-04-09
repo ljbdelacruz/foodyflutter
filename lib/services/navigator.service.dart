@@ -4,9 +4,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foody/pages/activity/activity.page.dart';
+import 'package:foody/pages/cart/cart.page.dart';
 import 'package:foody/pages/dashboard/dashboard.page.dart';
 import 'package:foody/pages/delivery/userdeliverymap.page.dart';
 import 'package:foody/pages/delivery/userdeliverystatus.page.dart';
+import 'package:foody/pages/messages/messages.page.dart';
+import 'package:foody/pages/payment/selectpayment.page.dart';
 import 'package:foody/pages/product/editproduct.page.dart';
 import 'package:foody/pages/product/productlist.page.dart';
 import 'package:foody/pages/product/viewproduct.page.dart';
@@ -39,6 +42,22 @@ class NavigatorService{
   //to activity page
   toActivity(BuildContext context){
     Navigator.push(context,MaterialPageRoute(builder: (context) => ActivityPage()));          
+  }
+
+  //cart page
+  toCart(BuildContext context){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => CartPage()));          
+  }
+
+  //select payment
+  toSelectPayment(BuildContext context){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => SelectPaymentPage()));          
+  }
+
+
+  //chat pages
+  toMessagePage(BuildContext context){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => MessagePage()));          
   }
 
 }

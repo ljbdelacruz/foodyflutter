@@ -25,8 +25,8 @@ class DashboardFooterVM{
     this.collectionVM=CollectionListSubUIVM.footer(5,5,5);
     this.collectionVM.appendItems(0, "Home", "assets/images/home.png");
     this.collectionVM.appendItems(4, "Activity", "assets/images/plus.png");
-    this.collectionVM.appendItems(1, "New", "assets/images/plus.png");
-    this.collectionVM.appendItems(2, "Search", "assets/images/search.png");
+    this.collectionVM.appendItems(1, "Payment Method", "assets/images/wallet.png");
+    this.collectionVM.appendItems(2, "Inbox", "assets/images/chat.png");
     this.collectionVM.appendItems(3, "Notification", "assets/images/notification.png");
   }
 }

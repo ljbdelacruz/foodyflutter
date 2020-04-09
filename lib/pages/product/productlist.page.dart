@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foody/components/header/design3.header.dart';
 import 'package:foody/components/subui/listviews/cells/category.cells.dart';
 import 'package:foody/components/subui/listviews/collectionlist.subui.dart';
+import 'package:foody/components/subui/listviews/searchlistproduct.subui.dart';
 import 'package:foody/config/Constants.config.dart';
 import 'package:foody/services/navigator.service.dart';
 
@@ -30,14 +31,16 @@ class _ProductListPageState extends State<ProductListPage> {
                         body:
                           SingleChildScrollView(child:Column(
                               children: [
-                                Text("Product List Page"),
-                                Container(height:MediaQuery.of(context).size.height * 0.8,
+                                Container(height: 80, child: SearchListProductSubUI(widget.vm.searchBar, (search){
+                                  //selected item
+                                  print(search);
+                                })),
+                                Container(height:MediaQuery.of(context).size.height * 0.7,
                                       child: CollectionListSubUI(widget.vm.products, (index){
                                         //selected item index
                                         NavigatorService.instance.toProductInfo(context);
                                       })
                                 )
-
                               ]
                           )
                           )
@@ -50,11 +53,16 @@ class _ProductListPageState extends State<ProductListPage> {
 class ProductListPageVM{
   Design3HeaderVM header;
   CollectionListSubUIVM products;
+  SearchListProductSubUIVM searchBar;
+
   ProductListPageVM(){
     this.header=Design3HeaderVM();
-    this.products=CollectionListSubUIVM.product(4,4,4,0,0);
-    this.products.appendProductItemCells(0, "Prod 1", "PHP 100", "assets/images/plus.png");
-    this.products.appendProductItemCells(1, "Prod 2", "PHP 50", "assets/images/plus.png");    
+    this.products=CollectionListSubUIVM.product(2,2,2,10,10);
+    this.searchBar=SearchListProductSubUIVM("Search Products", Constants.instance.fbLoginInfo.firstName.substring(0,1)+Constants.instance.fbLoginInfo.lastName.substring(0,1));
+
+    Constants.instance.products.items.asMap().forEach((index, item){
+      this.products.appendProductItemCells(index, item.title, item.price.toString(), item.mainImage);
+    });
   }
   ProductListPageVM.products(List<CategoryCellsVM> items){
     this.header=Design3HeaderVM();
