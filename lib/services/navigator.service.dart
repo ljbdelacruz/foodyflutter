@@ -8,6 +8,7 @@ import 'package:foody/pages/cart/cart.page.dart';
 import 'package:foody/pages/dashboard/dashboard.page.dart';
 import 'package:foody/pages/delivery/userdeliverymap.page.dart';
 import 'package:foody/pages/delivery/userdeliverystatus.page.dart';
+import 'package:foody/pages/messages/chat.page.dart';
 import 'package:foody/pages/messages/messages.page.dart';
 import 'package:foody/pages/payment/selectpayment.page.dart';
 import 'package:foody/pages/product/editproduct.page.dart';
@@ -59,5 +60,7 @@ class NavigatorService{
   toMessagePage(BuildContext context){
     Navigator.push(context,MaterialPageRoute(builder: (context) => MessagePage()));          
   }
-
+  toChatPage(BuildContext context){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => ChatPage()));          
+  }
 }

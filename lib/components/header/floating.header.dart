@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foody/components/buttons/image2.button.dart';
 import 'package:foody/methodinterface/widget.interface.dart';
 import 'package:foody/services/Color.service.dart';
 import 'package:rounded_floating_app_bar/rounded_floating_app_bar.dart';
