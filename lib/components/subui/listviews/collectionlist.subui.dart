@@ -4,6 +4,7 @@ import 'package:foody/components/subui/listviews/cells/menuitem.cells.dart';
 import 'package:foody/methodinterface/widget.interface.dart';
 
 import 'cells/activity.cells.dart';
+import 'cells/productitem.cells.dart';
 
 class CollectionListSubUI extends StatelessWidget {
   final GetIntData getIndex;
@@ -13,7 +14,7 @@ class CollectionListSubUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
-      itemCount: vm.cellType == CollectionListCellType.activity ? vm.activityCells.length : vm.items.length,
+      itemCount: vm.cellType == CollectionListCellType.productitem ? vm.productItemCells.length : vm.items.length,
       itemBuilder: (ctx, i) => getCellsOption(i, ctx),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: vm.crossAxisCount,
@@ -31,8 +32,8 @@ class CollectionListSubUI extends StatelessWidget {
       case CollectionListCellType.category:
         return CategoryCells(vm.items[index], getIndex);
         break;
-      case CollectionListCellType.activity:
-        return ActivityCells(vm.activityCells[index], getIndex);
+      case CollectionListCellType.productitem:
+        return ProductItemCells(vm.productItemCells[index], getIndex);
         break;
     }
   }
@@ -46,7 +47,7 @@ class CollectionListSubUIVM{
   double widthAspect=3;
   double heightAspect=3;
   double fontSize=10;
-  List<ActivityCellsVM> activityCells=[];
+  List<ProductItemCellsVM> productItemCells=[];
   List<CategoryCellsVM> items=[];
   CollectionListSubUIVM(this.widthAspect, this.heightAspect){
     this.fontSize=15;
@@ -59,19 +60,14 @@ class CollectionListSubUIVM{
   appendItems(int index, String title, String image){
     items.add(CategoryCellsVM(index, title, image, this.fontSize));
   }
-  appendActivityCells(int index, String title, String desc, String status, String image){
-    this.cellType = CollectionListCellType.activity;
-    this.widthAspect=1;
-    this.heightAspect=1;
-    this.crossAxisCount=1;
-    this.crossAxisSpacing=0;
-    this.mainAxisSpacing=0;
-    activityCells.add(ActivityCellsVM.item(title, desc, status, image, index));
+  appendProductItemCells(int index, String title, String desc, String image){
+    this.cellType = CollectionListCellType.productitem;
+    productItemCells.add(ProductItemCellsVM(index, title, desc, image));
   }
 }
 
 enum CollectionListCellType{
-  category, menu, activity
+  category, menu, productitem
 }
 
 

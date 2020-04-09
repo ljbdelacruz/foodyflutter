@@ -48,13 +48,13 @@ class _DashboardPageState extends State<DashboardPage> {
         }
       })),
       backgroundColor: Colors.transparent,
-      body: 
+      body:
         SingleChildScrollView(child:Column(
             children: [
               Container(height: 300, 
                 child:CollectionListSubUI(widget.vm.category, (index){
                   //index here of item selected
-                  NavigatorService.instance..toProductInfo(context);
+                  NavigatorService.instance.toProductList(context);
                 }),
               ),
             ],),

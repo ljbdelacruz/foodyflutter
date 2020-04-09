@@ -37,6 +37,6 @@ class ProductItemCellsVM{
   String title;
   String subDesc;
   String imageUrl;
-  ProductItemCellsVM(this.index, this.title, this.imageUrl);
+  ProductItemCellsVM(this.index, this.title, this.subDesc, this.imageUrl);
 }
 

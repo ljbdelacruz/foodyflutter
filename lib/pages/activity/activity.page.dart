@@ -4,6 +4,7 @@ import 'package:foody/config/Constants.config.dart';
 import 'package:foody/pages/activity/subpage/activity.subpage.dart';
 import 'package:foody/pages/activity/subpage/delivery.subpage.dart';
 import 'package:foody/services/Color.service.dart';
+import 'package:foody/services/navigator.service.dart';
 
 
 class ActivityPage extends StatefulWidget{
@@ -37,6 +38,7 @@ class ActivityPageState extends State<ActivityPage> {
                 //selected item
                 print("Selected Index");
                 print(index);
+                NavigatorService.instance.toUserDeliveryStatus(context);
               }),
               DeliverySubPage(widget.vm.deliverySubPageVM),
             ],

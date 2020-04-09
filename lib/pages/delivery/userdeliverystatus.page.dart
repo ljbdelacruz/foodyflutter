@@ -27,6 +27,12 @@ class _UserDeliveryStatusPageState extends State<UserDeliveryStatusPage> {
                         body:
                           SingleChildScrollView(child:Column(
                               children: [
+                                Card(child: Row(children:[
+                                  Column(children:[
+                                    Text("Status: Out for Delivery", style:TextStyle(fontSize: 12)),
+                                    Text("25 Minutes", style:TextStyle(fontSize: 20))
+                                  ])
+                                ]),)
 
                               ]
                           )

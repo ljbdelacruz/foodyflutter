@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foody/components/footer/order.footer.dart';
 import 'package:foody/components/header/design3.header.dart';
 import 'package:foody/components/subui/image/imagecarousel.subui.dart';
 import 'package:foody/config/Constants.config.dart';
@@ -19,6 +20,7 @@ class _ViewProductPageState extends State<ViewProductPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
+
                         color:Constants.instance.themeColor,
                         child: Scaffold(
                         appBar: PreferredSize(child: Design3Header(widget.vm.header, (){
@@ -33,7 +35,8 @@ class _ViewProductPageState extends State<ViewProductPage> {
                                 }),
                               ]
                           )
-                          )
+                          ),
+                          bottomNavigationBar:OrderFooter(widget.vm.footer, (){}, (){})
                         ,),
         )
       );
@@ -43,8 +46,10 @@ class _ViewProductPageState extends State<ViewProductPage> {
 class ViewProductPageVM{
   Design3HeaderVM header;
   ImageCarouselSubUIVM images;
+  OrderFooterVM footer;
   ViewProductPageVM(){
     this.images=ImageCarouselSubUIVM();
     this.header=Design3HeaderVM();
+    this.footer=OrderFooterVM.order();
   }
 }
