@@ -78,7 +78,7 @@ class DashboardPageState extends State<DashboardPage> {
               NavigatorService.instance.toSelectPayment(context);
               break;
             case 2:
-              NavigatorService.instance.toChatPage(context);
+              NavigatorService.instance.toMessagePage(context);
               break;
             case 3:
               //notification page

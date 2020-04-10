@@ -30,7 +30,6 @@ class ChatPageState extends State<ChatPage> {
                         body: 
                           SingleChildScrollView(child:Column(
                               children: [
-                                Text("Chat Page"),
                                 ChatListSubUI(widget.vm.chatUI, (index){}),
                               ]
                           )
