@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/header/design3.header.dart';
+import 'package:foody/components/subui/listviews/cartlist.subui.dart';
 import 'package:foody/config/Constants.config.dart';
 
 
@@ -24,23 +25,34 @@ class CartPageState extends State<CartPage> {
                           //btn clicked
                         }), preferredSize: Size.fromHeight(100)),
                         backgroundColor: Colors.transparent,
-                        body:
-                          SingleChildScrollView(child:Column(
-                              children: [
-                                Text("Cart Page")
-                              ]
-                          )
-                          )
+                        body:body()
+                        
                         ,),
         )
       );
   }
+
+  Widget body(){
+    return SingleChildScrollView(child:Column(
+                              children: [
+                                CartListSubUI(widget.vm.cartListVM, widget.vm.getIndex)
+                              ]
+                          )
+    );
+  }
+
 }
 
 class CartPageVM{
   Design3HeaderVM header;
+  CartListSubUIVM cartListVM;
   CartPageVM(){
     this.header=Design3HeaderVM();
+    this.cartListVM=CartListSubUIVM(this.getIndex);
+  }
+
+  getIndex(int index){
+    print("GetIndex");
   }
 
 }

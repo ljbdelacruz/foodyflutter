@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foody/model/product.model.dart';
 import 'package:foody/pages/activity/activity.page.dart';
 import 'package:foody/pages/cart/cart.page.dart';
 import 'package:foody/pages/dashboard/dashboard.page.dart';
@@ -28,8 +29,8 @@ class NavigatorService{
   toEditProduct(BuildContext context){
     Navigator.push(context,MaterialPageRoute(builder: (context) => EditProductPage()));          
   }
-  toProductInfo(BuildContext context){
-    Navigator.push(context,MaterialPageRoute(builder: (context) => ViewProductPage()));          
+  toProductInfo(BuildContext context, ProductItemModel item){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => ViewProductPage(ViewProductPageVM.selectedProd(item))));          
   }
 
   //setting delivery location

@@ -28,6 +28,7 @@ class EnterMessageFooter extends StatelessWidget {
                             icon: Icon(Icons.send),
                             onPressed: () {
                               this.sendOnClick(vm.messageC.text);
+                              FocusScope.of(context).requestFocus(FocusNode());
                             },
                           ),
                           border: InputBorder.none,

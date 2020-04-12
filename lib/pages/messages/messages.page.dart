@@ -21,7 +21,6 @@ class MessagePageState extends State<MessagePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
-
                         color:Constants.instance.themeColor,
                         child: Scaffold(
                         appBar: PreferredSize(child: Design3Header(widget.vm.header, (){

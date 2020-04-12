@@ -5,10 +5,9 @@ import 'package:foody/components/header/floating.header.dart';
 import 'package:foody/components/sidebar/dashboard.sidemenu.dart';
 import 'package:foody/components/subui/image/imagecarousel.subui.dart';
 import 'package:foody/components/subui/listviews/collectionlist.subui.dart';
+import 'package:foody/components/subui/listviews/productcardlist.subui.dart';
 import 'package:foody/config/Constants.config.dart';
 import 'package:foody/services/navigator.service.dart';
-import 'package:rounded_floating_app_bar/rounded_floating_app_bar.dart';
-
 
 class DashboardPage extends StatefulWidget{
   final DashboardPageVM vm=DashboardPageVM();
@@ -63,6 +62,7 @@ class DashboardPageState extends State<DashboardPage> {
                   NavigatorService.instance.toProductList(context);
                 }),
               ),
+              ProductCardListSubUI(widget.vm.productVM, (index){})
 
             ],),
         );
@@ -100,8 +100,10 @@ class DashboardPageVM{
   ImageCarouselSubUIVM image;
   DashboardFooterVM footer;
   DashboardSideMenuVM sideMenu;
+  ProductCardListSubUIVM productVM;
 
   DashboardPageVM(){
+    this.productVM=ProductCardListSubUIVM();
     this.header=Design3HeaderVM();
     category=CollectionListSubUIVM(3, 3);
     Constants.instance.fcategory.fcategory.asMap().forEach((index,item){

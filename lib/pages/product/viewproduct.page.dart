@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/footer/order.footer.dart';
-import 'package:foody/components/header/design3.header.dart';
+import 'package:foody/components/header/design4.header.dart';
+import 'package:foody/components/image/animated.image.dart';
+import 'package:foody/components/image/thumbnail.image.dart';
+import 'package:foody/components/subui/drag/productinfo.drag.dart';
 import 'package:foody/components/subui/image/imagecarousel.subui.dart';
 import 'package:foody/config/Constants.config.dart';
+import 'package:foody/model/product.model.dart';
 
 
 class ViewProductPage extends StatefulWidget{
-  final ViewProductPageVM vm=ViewProductPageVM();
-  ViewProductPage();
+  final ViewProductPageVM vm;
+  ViewProductPage(this.vm);
   @override
   _ViewProductPageState createState() => _ViewProductPageState();
 }
-class _ViewProductPageState extends State<ViewProductPage> {
+class _ViewProductPageState extends State<ViewProductPage> with TickerProviderStateMixin{
+  AnimationController controller;  
+  Animation<double> animation;  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    this.animation=Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(parent: controller, curve: Curves.easeInToLinear));    
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -23,33 +37,40 @@ class _ViewProductPageState extends State<ViewProductPage> {
 
                         color:Constants.instance.themeColor,
                         child: Scaffold(
-                        appBar: PreferredSize(child: Design3Header(widget.vm.header, (){
-                          //btn clicked
-                        }), preferredSize: Size.fromHeight(100)),
                         backgroundColor: Colors.transparent,
                         body: 
-                          SingleChildScrollView(child:Column(
+                          Stack(children:[
+                            Column(
                               children: [
-                                ImageCarouselSubUI(widget.vm.images, (index){
-                                  //index here 
-                                }),
+                                Padding(padding: EdgeInsets.fromLTRB(20, 20, 20, 20), child: PreferredSize(preferredSize: Size.fromHeight(100), child: Design4Header(widget.vm.header, (){
+                                  setState(() {
+                                    widget.vm.header.isLiked = !widget.vm.header.isLiked;
+                                  });
+                                }))),
+                                Container(height: 200, child: AnimatedImage(AnimatedImageVM("LJS", 1, this.animation, widget.vm.selectedProd.mainImage))),
+                                Container(height:100, child: ThumbnailImage(ThumbnailImageVM(MediaQuery.of(context).size.width, 1, animation, widget.vm.selectedProd.thumbnails)))
                               ]
-                          )
-                          ),
-                          bottomNavigationBar:OrderFooter(widget.vm.footer, (){}, (){})
-                        ,),
+                            ),
+                            ProductInfoDragSubUI(widget.vm.productInfoVM)
+                          ])
+                          // bottomNavigationBar:OrderFooter(widget.vm.footer, (){}, (){})
+                        ),
         )
       );
   }
+
+
 }
 
 class ViewProductPageVM{
-  Design3HeaderVM header;
-  ImageCarouselSubUIVM images;
+  ProductItemModel selectedProd;
+  Design4HeaderVM header;
   OrderFooterVM footer;
-  ViewProductPageVM(){
-    this.images=ImageCarouselSubUIVM();
-    this.header=Design3HeaderVM();
+  ProductInfoDragSubUIVM productInfoVM;
+
+  ViewProductPageVM.selectedProd(this.selectedProd){
+    this.header=Design4HeaderVM();
     this.footer=OrderFooterVM.order();
+    this.productInfoVM = ProductInfoDragSubUIVM.setup(this.selectedProd.title, this.selectedProd.price.toString(), this.selectedProd.desc, this.selectedProd.rating, this.selectedProd.reviewerCount);
   }
 }

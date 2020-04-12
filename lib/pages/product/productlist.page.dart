@@ -38,7 +38,7 @@ class _ProductListPageState extends State<ProductListPage> {
                                 Container(height:MediaQuery.of(context).size.height * 0.7,
                                       child: CollectionListSubUI(widget.vm.products, (index){
                                         //selected item index
-                                        NavigatorService.instance.toProductInfo(context);
+                                        NavigatorService.instance.toProductInfo(context, Constants.instance.products.items[index]);
                                       })
                                 )
                               ]
@@ -54,6 +54,8 @@ class ProductListPageVM{
   Design3HeaderVM header;
   CollectionListSubUIVM products;
   SearchListProductSubUIVM searchBar;
+
+  
 
   ProductListPageVM(){
     this.header=Design3HeaderVM();
