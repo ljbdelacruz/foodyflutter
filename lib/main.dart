@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foody/pages/login/userlogin.page.dart';
-import 'package:foody/services/device.service.dart';
+import 'package:foody/pages/intro/intro.page.dart';
+import 'package:foody/services/navigator.service.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: UserLoginPage(),
+      home: IntroPage((subcont){
+        //clicked
+        print("Login CLick");
+        NavigatorService.instance.toLoginPage(subcont);
+      }),
     );
   }
 }

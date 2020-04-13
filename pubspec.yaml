@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  device_info: ^0.4.2+1    
+  intro_views_flutter: ^2.8.1  
   beauty_textfield: ^0.0.1
   search_widget: ^1.0.2
   flutter_facebook_login: ^3.0.0

@@ -3,12 +3,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foody/methodinterface/widget.interface.dart';
 import 'package:foody/model/product.model.dart';
 import 'package:foody/pages/activity/activity.page.dart';
 import 'package:foody/pages/cart/cart.page.dart';
 import 'package:foody/pages/dashboard/dashboard.page.dart';
 import 'package:foody/pages/delivery/userdeliverymap.page.dart';
 import 'package:foody/pages/delivery/userdeliverystatus.page.dart';
+import 'package:foody/pages/intro/intro.page.dart';
+import 'package:foody/pages/login/userlogin.page.dart';
 import 'package:foody/pages/messages/chat.page.dart';
 import 'package:foody/pages/messages/messages.page.dart';
 import 'package:foody/pages/payment/selectpayment.page.dart';
@@ -18,6 +21,12 @@ import 'package:foody/pages/product/viewproduct.page.dart';
 
 class NavigatorService{
   static NavigatorService instance=NavigatorService();
+  toIntroPage(BuildContext context, ContextCallback callback){
+    Navigator.push(context,MaterialPageRoute(builder: (context) => IntroPage(callback)));
+  }
+  toLoginPage(BuildContext context){
+    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => UserLoginPage()));
+  }
 
   toDashboard(BuildContext context){
     Navigator.push(context,MaterialPageRoute(builder: (context) => DashboardPage()));          
