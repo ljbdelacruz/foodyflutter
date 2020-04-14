@@ -39,11 +39,12 @@ class FacebookService{
 }
 
 class FacebookUserInfo{
-  String email;
-  String firstName;
-  String lastName;
-  String name;
-  String id;
+  String email="sample";
+  String firstName="sample";
+  String lastName="sample";
+  String name="sample";
+  String id="sample";
+  FacebookUserInfo();
   FacebookUserInfo.json(dynamic data){
     this.email=data["email"].toString();
     this.firstName=data["first_name"].toString();

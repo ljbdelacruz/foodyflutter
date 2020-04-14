@@ -51,6 +51,8 @@ class _UserLoginPageState extends State<UserLoginPage> {
                                 ButtonLoader(widget.vm.buttonVM, (){
                                   //clicked
                                   this.startLoader();
+                                  this.finishLoader();                                  
+                                  NavigatorService.instance.toDashboard(context);                                  
                                 }, (){
                                   //finished loader
                                 }),

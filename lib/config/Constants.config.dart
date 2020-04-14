@@ -13,11 +13,9 @@ import 'package:foody/themes/lightcolor.themes.dart';
 class Constants{
 
   static Constants instance=Constants();
-
   DeviceInfo device=DeviceInfo.mydefault();
-
   Color themeColor=LightColor.lightGrey;
-  FacebookUserInfo fbLoginInfo;
+  FacebookUserInfo fbLoginInfo=FacebookUserInfo();
   String currency="";
   int currencyCode=0;
   ProductModel products;

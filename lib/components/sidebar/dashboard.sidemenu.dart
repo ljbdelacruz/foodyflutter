@@ -51,7 +51,7 @@ class DashboardSideMenuVM{
   DashboardSideMenuVM.user(this.title, this.subDesc){
     items=[
            DashboardSideMenuItemVM("assets/images/sidemenu/home.png", "Home", 1),      
-           DashboardSideMenuItemVM("assets/images/sidemenu/wallet.png", "My Ads", 2),
+           DashboardSideMenuItemVM("assets/images/sidemenu/wallet.png", "Apply as Merchant", 2),
            DashboardSideMenuItemVM("assets/images/sidemenu/settings.png", "Settings", 3),
            DashboardSideMenuItemVM("assets/images/sidemenu/info.png", "Help Center", 4),
            DashboardSideMenuItemVM("assets/images/sidemenu/tac.png", "Terms and Conditions", 5),           
