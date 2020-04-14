@@ -49,6 +49,7 @@ class _UserDeliveryMapPageState extends State<UserDeliveryMapPage> {
         )
       );
   }
+
 }
 
 class UserDeliveryMapPageVM{

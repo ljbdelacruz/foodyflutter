@@ -2,8 +2,11 @@
 
 import 'package:foody/model/store.model.dart';
 
+import 'category.model.dart';
+
 class ProductModel{
   List<ProductItemModel> items = [];
+  ProductModel();
   ProductModel.dum1(){
     this.items.add(ProductItemModel.dum1());
     this.items.add(ProductItemModel.dum2());
@@ -21,6 +24,7 @@ class ProductItemModel{
   double rating = 0;
   int reviewerCount=0;
   List<String> thumbnails = [];
+  ProductCategory category = ProductCategory();
 
 
   ProductItemModel.dum1(){

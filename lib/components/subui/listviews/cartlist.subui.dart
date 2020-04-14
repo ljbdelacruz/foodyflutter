@@ -38,11 +38,14 @@ class CartListSubUIVM{
   Color dividerC=Colors.white;
   double height=400;
   List<Widget> items = [];
-  CartListSubUIVM(GetIntData getIndex){
-    this.appendCartItemCells(getIndex);
+  CartListSubUIVM(){
+    // this.dummyCartItemCells(getIndex);
   }
-  appendCartItemCells(GetIntData getIndex){
+  dummyCartItemCells(GetIntData getIndex){
     items.add(CartItemCells(CartItemCellsVM.dum1(), getIndex));
+  }
+  appendCartItemCells(Widget item){
+    items.add(item);
   }
 
 }

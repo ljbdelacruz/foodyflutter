@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foody/components/header/design3.header.dart';
 import 'package:foody/components/subui/listviews/cartlist.subui.dart';
+import 'package:foody/components/subui/listviews/cells/cartitem.cells.dart';
 import 'package:foody/config/Constants.config.dart';
 
 
@@ -48,9 +49,14 @@ class CartPageVM{
   CartListSubUIVM cartListVM;
   CartPageVM(){
     this.header=Design3HeaderVM();
-    this.cartListVM=CartListSubUIVM(this.getIndex);
+    this.cartListVM=CartListSubUIVM();
+    Constants.instance.cart.items.forEach((item){
+      this.cartListVM.appendCartItemCells(newCartItem(item.quantity, item.product.price, item.product.title, item.product.mainImage));
+    });
   }
-
+  Widget newCartItem(int quantity, double price, String name, String image){
+    return CartItemCells(CartItemCellsVM(quantity, price, name, image), this.getIndex);
+  }
   getIndex(int index){
     print("GetIndex");
   }

@@ -1,6 +1,8 @@
 
 
 
+import 'package:foody/model/product.model.dart';
+import 'package:foody/model/review.model.dart';
 import 'package:foody/model/users.model.dart';
 
 class StoreModel{
@@ -9,7 +11,8 @@ class StoreModel{
   int reviewerCount;
   String profileImage;
   UsersModel owner;
-
+  List<StoreReviewModel> reviews = [];
+  ProductModel products = ProductModel();
   StoreModel.dum1(){
     this.name = "Big Bang Store";
     this.storeReview = 3.0;

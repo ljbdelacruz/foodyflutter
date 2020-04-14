@@ -11,16 +11,18 @@ import 'package:foody/services/facebook.service.dart';
 import 'package:foody/themes/lightcolor.themes.dart';
 
 class Constants{
-  DeviceInfo device=DeviceInfo.mydefault();
 
   static Constants instance=Constants();
+
+  DeviceInfo device=DeviceInfo.mydefault();
+
   Color themeColor=LightColor.lightGrey;
   FacebookUserInfo fbLoginInfo;
   String currency="";
   int currencyCode=0;
   ProductModel products;
   FoodCategoryVM fcategory=FoodCategoryVM();
-  CartModel cart;
+  CartModel cart = CartModel();
 
   Constants(){
     this.cart=CartModel();
@@ -30,6 +32,10 @@ class Constants{
   setupProductCategory(){
     
   }
+}
+
+enum AccountAccessType{
+  user, merchant
 }
 
 
