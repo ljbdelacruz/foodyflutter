@@ -3,6 +3,7 @@ import 'package:flutter_tab_bar_no_ripple/flutter_tab_bar_no_ripple.dart';
 import 'package:foody/components/header/design2.header.dart';
 import 'package:foody/pages/activity/subpage/activity.subpage.dart';
 import 'package:foody/pages/activity/subpage/delivery.subpage.dart';
+import 'package:foody/pages/activity/subpage/topay.subpage.dart';
 
 
 class ActivityPage extends StatefulWidget{
@@ -41,7 +42,7 @@ class ActivityPageState extends State<ActivityPage> with SingleTickerProviderSta
       body: TabBarView(
           controller: _controller,
           children: [
-            Text("To Pay Page"),
+            ToPaySubPage(widget.vm.toPayPageVM),
             Text("To Ship Page"),            
             Text("For Delivery Page"),                        
             Text("To Receive Page"),
@@ -95,10 +96,13 @@ class ActivityPageVM{
   Design2HeaderVM header;
   DeliverySubPageVM deliverySubPageVM;
   ActivitySubPageVM activitySubPageVM;
+  ToPaySubPageVM toPayPageVM;
+
   ActivityPageVM(){
     this.header=Design2HeaderVM();
     this.deliverySubPageVM=DeliverySubPageVM();
     this.activitySubPageVM=ActivitySubPageVM();
+    this.toPayPageVM=ToPaySubPageVM();
   }
 
 }

@@ -12,7 +12,6 @@ class DeliverySubPage extends StatelessWidget {
     )) ;      
   }
 }
-
 class DeliverySubPageVM{
   DeliverySubPageVM();
 }

@@ -42,6 +42,5 @@ class TableViewListSubUIVM{
   appendActivityCells(int index, String title, String desc, String status, String image){
     activityCells.add(ActivityCellsVM.item(title, desc, status, image, index));
   }
-
-
+  
 }
