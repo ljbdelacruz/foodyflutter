@@ -55,13 +55,10 @@ class ProductListPageVM{
   CollectionListSubUIVM products;
   SearchListProductSubUIVM searchBar;
 
-  
-
   ProductListPageVM(){
     this.header=Design3HeaderVM();
     this.products=CollectionListSubUIVM.product(2,2,2,10,10);
-    this.searchBar=SearchListProductSubUIVM("Search Products", Constants.instance.fbLoginInfo.firstName.substring(0,1)+Constants.instance.fbLoginInfo.lastName.substring(0,1));
-
+    this.searchBar=SearchListProductSubUIVM("Search Products", Constants.instance.userLoginData.firstName.substring(0,1)+Constants.instance.userLoginData.lastName.substring(0,1));
     Constants.instance.products.items.asMap().forEach((index, item){
       this.products.appendProductItemCells(index, item.title, item.price.toString(), item.mainImage);
     });

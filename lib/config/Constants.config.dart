@@ -8,22 +8,24 @@ import 'package:foody/model/cart.model.dart';
 import 'package:foody/model/foodcategory.model.dart';
 import 'package:foody/model/product.model.dart';
 import 'package:foody/model/topay.model.dart';
+import 'package:foody/model/users.model.dart';
 import 'package:foody/services/facebook.service.dart';
 import 'package:foody/themes/lightcolor.themes.dart';
 
 class Constants{
   static Constants instance=Constants();
-  
+
   DeviceInfo device=DeviceInfo.mydefault();
   Color themeColor=LightColor.lightGrey;
-  FacebookUserInfo fbLoginInfo=FacebookUserInfo();
+  UsersModel userLoginData;
   String currency="";
   int currencyCode=0;
   ProductModel products;
   FoodCategoryVM fcategory=FoodCategoryVM();
   CartModel cart = CartModel();
   ToPayListModel topaylist = ToPayListModel();
-
+  ApplicationType appType=ApplicationType.mobile;
+  String baseURL="http://192.168.0.25:8080/api/";
 
   Constants(){
     this.cart=CartModel();
@@ -34,9 +36,11 @@ class Constants{
     
   }
 }
-
 enum AccountAccessType{
-  user, merchant
+  user, merchant, admin
+}
+enum ApplicationType{
+  mobile, web
 }
 
 

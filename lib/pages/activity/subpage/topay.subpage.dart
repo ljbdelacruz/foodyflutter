@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foody/components/subui/listviews/widgetlistV.subui.dart';
+import 'package:foody/components/subui/listviews/widget.listview.dart';
 
 class ToPaySubPage extends StatefulWidget{
   final ToPaySubPageVM vm;

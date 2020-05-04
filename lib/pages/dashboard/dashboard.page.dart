@@ -109,7 +109,7 @@ class DashboardPageVM{
     Constants.instance.fcategory.fcategory.asMap().forEach((index,item){
       category.appendItems(index, item.title, item.image);
     });
-    this.sideMenu=DashboardSideMenuVM.user("Hello", Constants.instance.fbLoginInfo.name);    
+    this.sideMenu=DashboardSideMenuVM.user("Hello", Constants.instance.userLoginData.firstName+" "+Constants.instance.userLoginData.lastName);    
     this.image=ImageCarouselSubUIVM();
     this.footer=DashboardFooterVM.foodyDashboard();    
   }

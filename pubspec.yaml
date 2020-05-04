@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #internet connectivity
+  connectivity: ^0.4.8+2  
   device_info: ^0.4.2+1    
   intro_views_flutter: ^2.8.1  
   beauty_textfield: ^0.0.1

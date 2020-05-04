@@ -65,7 +65,6 @@ class NavigatorService{
     Navigator.push(context,MaterialPageRoute(builder: (context) => SelectPaymentPage()));          
   }
 
-
   //chat pages
   toMessagePage(BuildContext context){
     Navigator.push(context,MaterialPageRoute(builder: (context) => MessagePage()));          

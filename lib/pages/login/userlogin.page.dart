@@ -3,6 +3,7 @@ import 'package:foody/components/buttons/buttonloader.buttons.dart';
 import 'package:foody/components/subui/loginfields/userlogin.subui.dart';
 import 'package:foody/config/Constants.config.dart';
 import 'package:foody/methodinterface/widget.interface.dart';
+import 'package:foody/presenter/userinfo.presenter.dart';
 import 'package:foody/services/device.service.dart';
 import 'package:foody/services/facebook.service.dart';
 import 'package:foody/services/navigator.service.dart';
@@ -99,9 +100,11 @@ class UserLoginPageVM{
       //success process
       print(data.firstName);
       print(data.email);
-      Constants.instance.fbLoginInfo=data;
-      //navigate to dashboards
-      scall();
+      print(data.id);
+      UserPresenter.instance.fbLogin(data.firstName, data.lastName, data.id, (userLogindata){
+        Constants.instance.userLoginData=userLogindata;
+        scall();
+      }, fcall);
     });
   }
 
